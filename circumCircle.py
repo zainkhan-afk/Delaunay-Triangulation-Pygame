@@ -7,13 +7,22 @@ class CircumCircle:
 		p2 = triangle.edges[1].points[0]
 		p3 = triangle.edges[2].points[0]
 
+
 		side1 = triangle.edges[0].point_distance
 		side2 = triangle.edges[1].point_distance
 		side3 = triangle.edges[2].point_distance
-
+		
 		self.circum_center = self.GetCircumCenter(p1, p2, p3)
 
+		r1 = GetDistance(self.circum_center, p1)
+		r2 = GetDistance(self.circum_center, p2)
+		r3 = GetDistance(self.circum_center, p3)
+
+		# self.radius = (r1 + r2 + r3)/3
+
 		self.radius = self.GetCircumRadius(side1, side2, side3)
+
+		# print(r1, r2, r3, r, self.radius)
 
 	def GetCircumRadius(self, side1, side2, side3):
 		num = side1*side2*side3
@@ -22,7 +31,7 @@ class CircumCircle:
 		b = (-side1 + side2 + side3)
 		c = ( side1 - side2 + side3)
 		d = ( side1 + side2 - side3)
-		den = np.sqrt(a*b*c*d)
+		den = np.sqrt(abs(a*b*c*d))
 
 		return num / den
 
@@ -34,6 +43,7 @@ class CircumCircle:
 		a2, b2, c2 = self.GetPerpendicularBisectorLineEquation(p2, p3, a2, b2, c2)
 
 		circum_center = self.GetLinesIntersection(a1, b1, c1, a2, b2, c2)
+
 
 		return circum_center
 
@@ -61,11 +71,11 @@ class CircumCircle:
 		else:
 			x = (b2 * c1 - b1 * c2)//determinant
 			y = (a1 * c2 - a2 * c1)//determinant
-			return Point(x, y, 1)\
+			return Point(x, y, 1)
 
 	def IsPointInside(self, point):
 		dist = GetDistance(point, self.circum_center)
-		return dist<self.radius
+		return dist < self.radius
 
 	def __repr__(self):
 		return f"Circum Circle - Center: {self.circum_center}, Radius: {self.radius}"

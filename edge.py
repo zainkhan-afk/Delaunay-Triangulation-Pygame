@@ -22,5 +22,5 @@ class Edge:
 
 		return out_str
 
-	def __equals__(self, other):
+	def __eq__(self, other):
 		return (self.points[0] == other.points[0] and self.points[1] == other.points[1]) or (self.points[0] == other.points[1] and self.points[1] == other.points[0])

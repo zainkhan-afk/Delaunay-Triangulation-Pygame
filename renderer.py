@@ -19,8 +19,8 @@ class Renderer:
 
 	def Render(self, mesh):
 		for triangle in mesh:
-			pygame.draw.circle(self.screen, (125, 125, 125), (triangle.circum_circle.circum_center.x, triangle.circum_circle.circum_center.y), 2)
-			pygame.draw.circle(self.screen, (125, 125, 125), (triangle.circum_circle.circum_center.x, triangle.circum_circle.circum_center.y), triangle.circum_circle.radius, width = 3)
+			# pygame.draw.circle(self.screen, (125, 125, 125), (triangle.circum_circle.circum_center.x, triangle.circum_circle.circum_center.y), 2)
+			# pygame.draw.circle(self.screen, (125, 125, 125), (triangle.circum_circle.circum_center.x, triangle.circum_circle.circum_center.y), triangle.circum_circle.radius, width = 3)
 			for edge in triangle.edges:
 				pygame.draw.line(self.screen, self.edge_color, (edge.points[0].x, edge.points[0].y), (edge.points[1].x, edge.points[1].y), 1)
 				for point in edge.points:
