@@ -1,7 +1,7 @@
 import pygame
 
 class Renderer:
-	def __init__(self, width = 800, height = 600, title = "Delaunay Triangulation"):
+	def __init__(self, width = 1000, height = 700, title = "Delaunay Triangulation"):
 		self.width  = width
 		self.height = height
 		self.title = title
