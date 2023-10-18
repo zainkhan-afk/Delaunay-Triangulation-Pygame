@@ -16,6 +16,8 @@ e3 = Edge(p3, p1)
 
 t1 = Triangle(e1, e2, e3)
 
+print(t1)
+
 mesh = [t1]
 
 renderer = Renderer()
