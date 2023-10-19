@@ -10,7 +10,7 @@ import pygame
 import numpy as np
 
 random.seed(15)
-N = 100
+N = 50
 WIDTH = 1000
 HEIGHT = 700
 DT = DelaunayTriangulation()
