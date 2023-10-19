@@ -8,12 +8,6 @@ class Edge:
 
 		self.point_distance = GetDistance(point1, point2)
 
-	def AddPoint(self, point):
-		if len(self.points) < 2:
-			self.points.append(point)
-		else:
-			print("Edge already has 2 points, can't add more.")
-
 	def __str__(self):
 		out_str = "\nEdge - "
 
@@ -23,4 +17,7 @@ class Edge:
 		return out_str
 
 	def __eq__(self, other):
-		return (self.points[0] == other.points[0] and self.points[1] == other.points[1]) or (self.points[0] == other.points[1] and self.points[1] == other.points[0])
+		condition1 = self.points[0] == other.points[0] and self.points[1] == other.points[1]
+		condition2 = self.points[0] == other.points[1] and self.points[1] == other.points[0]
+		
+		return  condition1 or condition2 

@@ -10,11 +10,11 @@ import pygame
 import numpy as np
 
 random.seed(15)
-N = 3
+N = 20
 DT = DelaunayTriangulation()
 
 for i in range(N):
-	point = Point(randint(50, 950), randint(50, 650), 1)
+	point = Point(randint(50, 950), randint(50, 650), randint(0, 50))
 
 	DT.AddPoint(point)
 
@@ -32,7 +32,7 @@ while running:
 		if event.type == pygame.MOUSEBUTTONUP:
 			pos = pygame.mouse.get_pos()
 
-			point = Point(pos[0], pos[1], 1)
+			point = Point(pos[0], pos[1], randint(0, 50))
 			print("Point Added")
 			print(point)
 			DT.AddPoint(point)
