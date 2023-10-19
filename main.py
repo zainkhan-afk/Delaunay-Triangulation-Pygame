@@ -11,16 +11,18 @@ import numpy as np
 
 random.seed(15)
 N = 100
+WIDTH = 1000
+HEIGHT = 700
 DT = DelaunayTriangulation()
+renderer = Renderer(width = WIDTH, height = HEIGHT, show_mesh = True)
 
 for i in range(N):
-	point = Point(randint(50, 950), randint(50, 650), randint(0, 50))
+	point = Point(randint(50, WIDTH - 50), randint(50, HEIGHT - 50), randint(0, 50))
 
 	DT.AddPoint(point)
 
 DT.Triangulate()
 
-renderer = Renderer()
 
 running = True
 

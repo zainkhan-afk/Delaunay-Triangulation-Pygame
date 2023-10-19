@@ -5,10 +5,11 @@ from edge import Edge
 from utils import *
 
 class Renderer:
-	def __init__(self, width = 1000, height = 700, title = "Delaunay Triangulation", show_circum_circles = False, fill_mesh = True):
+	def __init__(self, width = 1000, height = 700, title = "Delaunay Triangulation", show_mesh = True, show_circum_circles = False, fill_mesh = True):
 		self.width  = width
 		self.height = height
 		self.title = title
+		self.show_mesh = show_mesh
 		self.show_circum_circles = show_circum_circles
 		self.fill_mesh = fill_mesh
 
@@ -100,12 +101,13 @@ class Renderer:
 				pygame.draw.circle(self.screen, (225, 225, 225), (triangle.circum_circle.circum_center.x, triangle.circum_circle.circum_center.y), 2)
 				pygame.draw.circle(self.screen, (50, 50, 50), (triangle.circum_circle.circum_center.x, triangle.circum_circle.circum_center.y), triangle.circum_circle.radius, width = 1)
 
-		for triangle in mesh:
-			for edge in triangle.edges:
-				pygame.draw.line(self.screen, self.edge_color, (edge.points[0].x, edge.points[0].y), (edge.points[1].x, edge.points[1].y), 3)
-				for point in edge.points:
-					color = (255 * point.z/50, 0, 255 * (50 - point.z)/50)
-					pygame.draw.circle(self.screen, color, (point.x, point.y), self.point_radius)
+		if self.show_mesh:
+			for triangle in mesh:
+				for edge in triangle.edges:
+					pygame.draw.line(self.screen, self.edge_color, (edge.points[0].x, edge.points[0].y), (edge.points[1].x, edge.points[1].y), 3)
+					for point in edge.points:
+						color = (255 * point.z/50, 0, 255 * (50 - point.z)/50)
+						pygame.draw.circle(self.screen, color, (point.x, point.y), self.point_radius)
 
 
 		pygame.display.flip()
