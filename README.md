@@ -18,7 +18,7 @@ The Delaunay triangulation code can be used without using any renderer.
 
 ```
 from delaunayTriangulation import DelaunayTriangulation
-import numpy as np
+from random import randint
 
 N = 50
 
@@ -27,5 +27,5 @@ for i in range(N):
 	DT.AddPoint(point)
 
 DT.Triangulate()
-
+# The DT.mesh contains the triangles that make up the delaunay triangulated mesh
 ```
